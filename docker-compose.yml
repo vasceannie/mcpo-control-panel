@@ -3,12 +3,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8083:8083"
+    # ports:
+    #   - "8083:8083"
     #   - "8000:8088"
     expose:
-      # - "8083"
-      - "8000"
+      - "8083"
+      - "8088"
     volumes:
       - /home/mcpo:/data
       - /home:/home
