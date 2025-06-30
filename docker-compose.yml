@@ -8,6 +8,9 @@ services:
       - "8000:8088"
     volumes:
       - /home/mcpo:/data
+      - /home:/home
+      - /nas:/nas
+      - /content:/content
     environment:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
