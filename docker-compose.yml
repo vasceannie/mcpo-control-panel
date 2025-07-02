@@ -14,12 +14,18 @@ services:
       - /home:/home
       - /nas:/nas
       - /content:/content
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /home/trav/.ssh/id_ed25519:/root/.ssh/id_ed25519
-      - /home/trav/.ssh/known_hosts:/root/.ssh/known_hosts
+      - /home/trav/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro
+      - /home/trav/.ssh/known_hosts:/root/.ssh/known_hosts:ro
     environment:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
       MCPO_MANAGER_DATA_DIR: "/data"
+      DOCKER_HOST: "ssh://trav@localhost"  # Or use IP if not the same physical host
     restart: unless-stopped
-    command: ["uv", "run", "python", "-m", "mcpo_control_panel", "--host", "0.0.0.0", "--port", "8083", "--config-dir", "/data"]
+    command:
+      [
+        "sh", "-c",
+        "chmod 600 /root/.ssh/id_ed25519 && \
+         chown root:root /root/.ssh/id_ed25519 && \
+         uv run python -m mcpo_control_panel --host 0.0.0.0 --port 8083 --config-dir /data"
+      ]
