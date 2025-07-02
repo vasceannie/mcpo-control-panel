@@ -20,7 +20,6 @@ services:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
       MCPO_MANAGER_DATA_DIR: "/data"
-      DOCKER_HOST: "ssh://trav@localhost"  # Or use IP if not the same physical host
     restart: unless-stopped
     command:
       [
