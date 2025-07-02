@@ -16,6 +16,7 @@ services:
       - /content:/content
       - /home/trav/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro
       - /home/trav/.ssh/known_hosts:/root/.ssh/known_hosts:ro
+      - '/box/Obsidian Vault:/obsidian'
     environment:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
