@@ -14,6 +14,7 @@ services:
       - /home:/home
       - /nas:/nas
       - /content:/content
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
