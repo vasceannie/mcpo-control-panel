@@ -29,3 +29,10 @@ services:
          chown root:root /root/.ssh/id_ed25519 && \
          uv run python -m mcpo_control_panel --host 0.0.0.0 --port 8083 --config-dir /data"
       ]
+    labels:
+      - glance.name=MCPO Control Panel
+      - 'glance.url=http://mcpo.lab'
+      - 'glance.description=Please dont paywall. Please dont paywall.'
+      - glance.parent=openwebui
+      - glance.category=ai
+      - glance.hide=false
